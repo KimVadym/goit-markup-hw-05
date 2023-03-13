@@ -80,6 +80,7 @@ body {
 .header-page-menu {
   display: flex;
   align-items: center;
+  gap: 40px;
 }
 
 .header-page-connect {
@@ -104,22 +105,7 @@ body {
   color: var(--dark);
 }
 
-.menu-item:not(:last-child) {
-  margin-right: 40px;
-}
-
-.page-navigation {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: var(--dark);
-  transition: color var(--transinion-btn);
-}
-
-.page-navigation:hover,
-.page-navigation:focus {
-  color: var(--pressed-state);
+.menu-item {
 }
 
 .connection {
@@ -143,6 +129,42 @@ body {
 .contacts:hover,
 .contacts:focus {
   color: var(--pressed-state);
+}
+.page-navigation {
+  position: relative;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--dark);
+  display: block;
+  transition: color var(--transinion-btn);
+}
+
+.page-navigation:hover,
+.page-navigation:focus {
+  color: var(--pressed-state);
+}
+
+/* =================line========== */
+.page-navigation::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--pressed-state);
+  opacity: 0;
+  transition: opacity var(--transinion-btn);
+}
+
+.current::after {
+  opacity: 1;
 }
 
 /* -----------------hero-------------- */
