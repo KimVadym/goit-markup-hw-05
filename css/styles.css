@@ -10,6 +10,7 @@
   --modal-overlay: rgba(46, 47, 66, 0.4);
   --hero-background: rgba(46, 47, 66, 0.7);
   --main: #ffffff;
+  --transinion-btn: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*  =================nulling styles===================== */
@@ -37,6 +38,9 @@ img {
   display: block;
   width: 100%;
   height: auto;
+}
+button {
+  cursor: pointer;
 }
 
 /* ===============================container================= */
@@ -110,6 +114,7 @@ body {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--dark);
+  transition: color var(--transinion-btn);
 }
 
 .page-navigation:hover,
@@ -132,6 +137,7 @@ body {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text);
+  transition: color var(--transinion-btn);
 }
 
 .contacts:hover,
@@ -186,8 +192,9 @@ body {
   font-family: inherit;
   letter-spacing: 0.04em;
   padding: 16px 32px;
-  cursor: pointer;
   border: none;
+  transition: color var(--transinion-btn),
+    background-color var(--transinion-btn);
 }
 
 .hero-button:hover,
@@ -355,6 +362,8 @@ body {
   height: 40px;
   background-color: var(--primary-brand);
   border-radius: 50%;
+  transition: background-color var(--transinion-btn),
+    filter var(--transinion-btn);
 }
 .team-social-item-btn:hover,
 .team-social-item-btn:focus {
@@ -389,6 +398,7 @@ body {
   border: 1px solid var(--subtle-text);
   border-radius: 4px;
   fill: #8e8f99;
+  transition: fill var(--transinion-btn), border var(--transinion-btn);
 }
 .customers-item:hover,
 .customers-item:focus {
@@ -456,10 +466,11 @@ footer {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   padding: 0;
+  transition: background-color var(--transinion-btn);
 }
 .footer-social:hover,
 .footer-social:focus {
-  background: var(--success);
+  background-color: var(--success);
 }
 
 /*----------------------------- portfolio-------------------- */
@@ -480,7 +491,6 @@ footer {
 }
 .project-button {
   font-family: inherit;
-  cursor: pointer;
   background: var(--light);
   border: 1px solid var(--accent);
   border-radius: 4px;
@@ -491,6 +501,8 @@ footer {
   line-height: 1.5;
   text-align: center;
   letter-spacing: 0.04em;
+  transition: background-color var(--transinion-btn),
+    color var(--transinion-btn), box-shadow var(--transinion-btn);
 }
 
 .project-button:hover,
@@ -546,9 +558,85 @@ footer {
 }
 .project-titel {
   display: block;
+  transition: box-shadow var(--transinion-btn);
 }
 .project-titel:hover,
 .project-titel:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+/* =======================overlay================== */
+.overlay {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  background: #4d5ae5;
+  background-blend-mode: soft-light;
+  mix-blend-mode: normal;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 40px 32px;
+  width: 100%;
+  height: 100%;
+  transform: translate(0, 100%);
+  transition: transform var(--transinion-btn);
+}
+.overlay-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.project-titel:hover .overlay,
+.project-titel:focus .overlay {
+  transform: translate(0, 0);
+}
+/* =================modal window====================== */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--modal-overlay);
+  z-index: 100;
+  transition: opacity var(--transinion-btn), visibility var(--transinion-btn);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal {
+  width: 408px;
+  height: 576px;
+  background-color: var(--main);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-close-btn {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0;
+  background: #e7e9fc;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close-btn-icon:hover,
+.moal-close-btn-icon:focus {
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: var(--pressed-state);
+  fill: var(--main);
+  border-color: transparent;
 }
